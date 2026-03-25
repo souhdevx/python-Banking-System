@@ -1,13 +1,20 @@
 import sqlite3
-import random
-con = sqlite3.connect('data.db')
-cur = con.cursor()
-import Bank
-data1 = Bank.self.accounts
 
-cur.executemany(f"INSERT INTO Bank_Users(username, password, id)data1")
-data = cur.execute("SELECT * FROM Bank_Users")
-for row in data:
-    print(row)
-con.commit()
+con = sqlite3.connect('bank_data.db')
+cur = con.cursor()
+
+cur.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        username TEXT,
+        password TEXT,
+        id INTEGER PRIMARY KEY,
+        balance REAL
+    )
+''')
+
+def save_user(username, password, user_id, balance=0.0):
+    cur.execute("INSERT INTO users VALUES (?, ?, ?, ?)", 
+                (username, password, user_id, balance))
+    con.commit()
+
 con.close()
