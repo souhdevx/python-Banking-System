@@ -5,7 +5,7 @@ signup = signup_module.Signup()
 login = login_module.Login(signup)
 
 class Main:
-    @staticmethod
+    
     def menu():
         while True:
             print("-------------BANK-------------")
