@@ -1,17 +1,20 @@
-import Signupfile as signup_module
-import Loginfile as login_module
+import Signupfile 
+import Loginfile
+import Optionsfile
 
-signup = signup_module.Signup()
-login = login_module.Login(signup)
+signup = Signupfile.Signup()
+login = Loginfile.Login(signup)
+options = Optionsfile.Options(signup)
 
 class Main:
-    
+    @staticmethod
     def menu():
         while True:
             print("-------------BANK-------------")
             print('1. Sign up')
             print('2. Login')
-            print('3. Exit')
+            print('3. Other Options')
+            print('4. Exit')
             print("-------------BANK-------------")
             choice = input('Enter your choice: ').strip()
             if choice == '1':
@@ -22,6 +25,8 @@ class Main:
                         print('Goodbye!')
                         break
             elif choice == '3':
+                options.menu()
+            elif choice == '4':
                 print('Goodbye!')
                 break
             else:
@@ -29,4 +34,5 @@ class Main:
 
 if __name__ == "__main__":
     Main.menu()
+        
         
