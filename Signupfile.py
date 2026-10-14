@@ -1,20 +1,19 @@
-from random import randint
-
+from random import *
 class Signup:
     def __init__(self):
         self.accounts = []
-
     def create_account(self):
-        username = input("Enter username: ")
-        password = input("Enter password: ")
-        user_id = randint(1000, 9999)
-
-        new_account = {
-            'username': username,
-            'password': password,
+        account = {
+            'username': input("Enter username: "),
+            'password': input("Enter password: "),
             'balance': 0.0,
-            'id': user_id
+            'pin': 0000,
+            'rib': 00000000
         }
+        self.accounts.append(account)
+        self.account = account
+        print('Account created successfully.')
+        print('Get your PIN code before login in!')
+        return account
         
-        print(f"Your ID is {user_id}. Keep it safe!")
-        self.accounts.append(new_account)
+
